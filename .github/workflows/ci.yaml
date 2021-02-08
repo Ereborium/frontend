@@ -1,0 +1,36 @@
+name: Ereborium
+on: [pull_request]
+jobs:
+  continuous_integration:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [15]
+    steps:
+      - uses: actions/checkout@main
+      - name: Use Node.js ${{ matrix.node-version }}.x
+        uses: actions/setup-node@main
+        with:
+          node-version: ${{ matrix.node-version }}
+          check-latest: true
+      - name: Cache ~/.pnpm-store
+        uses: actions/cache@main
+        env:
+          cache-name: cache-pnpm-store
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-${{ matrix.node-version }}-build-
+            ${{ runner.os }}-
+      - name: Install pnpm
+        run: npm i -g pnpm
+      - name: install
+        run: pnpm i
+      - name: typecheck
+        run: pnpm type-check
+      - name: lint
+        run: pnpm lint
+      - name: test
+        run: pnpm test
