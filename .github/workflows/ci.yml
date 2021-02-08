@@ -1,0 +1,41 @@
+name: Pnpm Example Workflow
+on:
+  push:
+    branches: 
+    - main
+  pull_request:
+    branches: 
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [15]
+    steps:
+    - uses: actions/checkout@main
+    - name: Use Node.js ${{ matrix.node-version }}.x
+      uses: actions/setup-node@main
+      with:
+        node-version: ${{ matrix.node-version }}
+        check-latest: true
+    - name: Cache ~/.pnpm-store
+      uses: actions/cache@main
+      env:
+        cache-name: cache-pnpm-store
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ matrix.node-version }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-${{ matrix.node-version }}-build-
+          ${{ runner.os }}-
+    - name: Install pnpm
+      run: npm i -g pnpm
+    - name: Npm Build
+      run: |
+        pnpm i
+    - name: Run tests
+      run: pnpm test
+    - name: Build application
+      run: pnpm build
