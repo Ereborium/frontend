@@ -22,7 +22,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "standard", "vue", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
@@ -30,8 +30,8 @@
     "@typescript-eslint/no-unused-vars": ["error"],
     "prettier/prettier": [
       "error",
-      {},
-      { "usePrettierrc": true, "endOfLine": "auto", "semi": true }
+      { "endOfLine": "auto", "semi": true },
+      { "usePrettierrc": true }
     ]
   }
 }

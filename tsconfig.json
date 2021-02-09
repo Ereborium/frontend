@@ -23,9 +23,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "jest.setup.js",
-    "jest.config.js"
+    "**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
