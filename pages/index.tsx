@@ -1,10 +1,11 @@
 import Head from "next/head";
 import { FC } from "react";
 import styles from "../styles/Home.module.css";
+import Layout from "@components/Layout";
 
 const Home: FC = () => {
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -61,7 +62,7 @@ const Home: FC = () => {
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
-    </div>
+    </Layout>
   );
 };
 
