@@ -20,7 +20,7 @@ const FoodListItem: FC<ItemProps> = ({ name, img_url, price }) => {
   return (
     <Grid
       key={name}
-      h="185px"
+      minH="185px"
       templateColumns="minmax(140px, 2fr) 4fr"
       margin="10px"
       bg="#E5E5E5"
