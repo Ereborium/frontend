@@ -1,4 +1,5 @@
 module.exports = {
+  target: "serverless",
   images: {
     domains: ["images.unsplash.com"],
     imageSizes: [16, 32, 48, 64],
