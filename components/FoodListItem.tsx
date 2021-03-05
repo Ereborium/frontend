@@ -1,72 +1,55 @@
 import { FC } from "react";
-import {
-  Grid,
-  GridItem,
-  Image,
-  Text,
-  Box,
-  HStack,
-  Circle,
-  Flex,
-} from "@chakra-ui/react";
-
-type ItemProps = {
+import { chakra, Box, Text, HStack, Circle, Flex } from "@chakra-ui/react";
+import Image from "next/image";
+interface FoodListItemProps {
   name: string;
   img_url: string;
   price: string;
-};
+  description: string;
+}
 
-const FoodListItem: FC<ItemProps> = ({ name, img_url, price }) => {
+const NextImage = chakra(Image, {
+  shouldForwardProp: (prop) =>
+    ["width", "height", "src", "alt", "sizes", "layout"].includes(prop),
+});
+
+export const FoodListItem: FC<FoodListItemProps> = ({
+  name,
+  img_url,
+  price,
+  description,
+}) => {
   return (
-    <Grid
-      key={name}
-      minH="185px"
-      templateColumns="minmax(140px, 2fr) 4fr"
-      margin="10px"
-      bg="#E5E5E5"
-      borderRadius="18px"
-    >
-      <GridItem minH="185px">
-        <Image
+    <Flex borderRadius="xl" overflow="hidden">
+      {/* @TODO it's not scaling properly */}
+      <Box w="100%" maxH="180px" maxW="30%">
+        <NextImage
           src={img_url}
+          layout="responsive"
+          width={200}
+          height={300}
           objectFit="cover"
-          h="100%"
-          w="100%"
-          borderRadius="18px 0 0 18px"
+          sizes="30vw"
         />
-      </GridItem>
-      <GridItem
-        minH="185px"
-        p="10px 15px"
-        display="flex"
-        flexDirection="column"
-      >
-        <Box>
-          <Text fontSize="24px" fontWeight="700">
-            {name}
+      </Box>
+      <Flex px={4} pb={1} direction="column" w="75%">
+        <Text fontSize="2xl" fontWeight="700">
+          {name}
+        </Text>
+        <Text noOfLines={3} paddingTop="3">
+          {description}
+        </Text>
+        <Flex justify="space-between" mt="auto">
+          <HStack spacing="3">
+            <Circle size="0.75rem" bg="grey" />
+            <Circle size="0.75rem" bg="grey" />
+            <Circle size="0.75rem" bg="grey" />
+          </HStack>
+          <Text fontSize="lg" fontWeight="600">
+            {price}
           </Text>
-          <Text noOfLines={3} paddingTop="10px">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            molestie libero metus, ac molestie tellus ornare eget. Nullam sem
-            urna, posuere at tellus quis, ornare dignissim magna. Donec tempor
-            congue augue, ac dignissim risus viverra non.
-          </Text>
-        </Box>
-        <Flex h="100%" alignItems="flex-end">
-          <Flex w="100%" justifyContent="space-between">
-            <HStack spacing={3}>
-              <Circle size="12px" bg="grey" />
-              <Circle size="12px" bg="grey" marginLeft="12px" />
-              <Circle size="12px" bg="grey" marginLeft="12px" />
-            </HStack>
-            <Text fontSize="18px" fontWeight="700">
-              {price}
-            </Text>
-          </Flex>
         </Flex>
-      </GridItem>
-    </Grid>
+      </Flex>
+    </Flex>
   );
 };
-
-export default FoodListItem;
