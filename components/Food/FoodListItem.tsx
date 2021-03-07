@@ -1,19 +1,14 @@
 import { FC } from "react";
 import { chakra, Box, Text, HStack, Circle, Flex } from "@chakra-ui/react";
 import Image from "next/image";
-interface FoodListItemProps {
-  name: string;
-  img_url: string;
-  price: string;
-  description: string;
-}
+import type { FoodItem } from "@components/Food/FoodTypes";
 
 const NextImage = chakra(Image, {
   shouldForwardProp: (prop) =>
     ["width", "height", "src", "alt", "sizes", "layout"].includes(prop),
 });
 
-export const FoodListItem: FC<FoodListItemProps> = ({
+export const FoodListItem: FC<FoodItem> = ({
   name,
   img_url,
   price,
