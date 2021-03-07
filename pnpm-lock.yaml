@@ -1585,7 +1585,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.3
       '@types/istanbul-reports': 3.0.0
-      '@types/node': 14.14.25
+      '@types/node': 14.14.32
       '@types/yargs': 15.0.13
       chalk: 4.1.0
     dev: true
@@ -4233,6 +4233,10 @@ packages:
   /graceful-fs/4.2.5:
     resolution:
       integrity: sha512-kBBSQbz2K0Nyn+31j/w36fUfxkBW9/gfwRWdUY1ULReH3iokVJgddZAFcD1D0xlgTmFxJCbUkUclAlc6/IDJkw==
+  /graceful-fs/4.2.6:
+    dev: true
+    resolution:
+      integrity: sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
   /graphql/15.5.0:
     dev: true
     engines:
@@ -5227,9 +5231,9 @@ packages:
   /jest-util/26.6.2:
     dependencies:
       '@jest/types': 26.6.2
-      '@types/node': 14.14.25
+      '@types/node': 14.14.32
       chalk: 4.1.0
-      graceful-fs: 4.2.5
+      graceful-fs: 4.2.6
       is-ci: 2.0.0
       micromatch: 4.0.2
     dev: true

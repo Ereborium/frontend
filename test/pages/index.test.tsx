@@ -4,7 +4,7 @@ import Home from "@pages/index";
 
 describe("Home page", () => {
   it("Test test", () => {
-    const { debug } = render(<Home />, {});
+    const { debug } = render(<Home items={[]} />, {});
     debug();
   });
 });

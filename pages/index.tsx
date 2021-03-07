@@ -2,7 +2,7 @@ import { FC } from "react";
 import Layout from "@components/Layout";
 import FoodList from "@components/Food/FoodList";
 import { GetServerSideProps } from "next";
-import { config } from "config";
+import { config } from "../config";
 import type { FoodServerSideProps } from "@components/Food/FoodTypes";
 
 const Home: FC<FoodServerSideProps> = ({ items }) => {
