@@ -22,7 +22,7 @@ export const FoodListItem: FC<FoodListItemProps> = ({
   return (
     <Flex borderRadius="xl" overflow="hidden">
       {/* @TODO it's not scaling properly */}
-      <Box w="100%" maxH="180px" maxW="30%">
+      <Box w="100%" maxH="180px" maxW={["35%", "30%"]}>
         <NextImage
           src={img_url}
           layout="responsive"
